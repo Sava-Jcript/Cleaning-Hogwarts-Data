@@ -22,7 +22,7 @@ const Students = {
 
 
 function loadJSON() {
-    fetch("./hogwartz_data.json")
+    fetch("hogwartz_data.json")
     .then( response => response.json() )
     .then( jsonData => {
         // when loaded, prepare objects
@@ -133,14 +133,26 @@ let house = jsonObject.house;
 
 
 
-    // Student.firstname = firstnameResult; 
-    // // Nickname concatenation
-    // Student.nickname = nicknameResult;
-    // // Middlename concatenation
-
-    // // * console.log(studentCard.lastname);
+    
     // // This is the concatenation for the house data
     // Student.house = houseResult.charAt(0).toUpperCase() + houseResult.slice(1).toLowerCase();
+let image="";
+    let imageSrc = new Image(100, 100);
+
+    // Defines the student image as imageSrc
+    Student.image=imageSrc ;
+    // Makes the last name lower case
+    let lastnameL = lastName.toLowerCase();
+    // Takes the first letter of the firstname and makes it lower case
+    let firstnameL = firstnameResult.charAt(0).toLowerCase();
+    // Defines the image src
+    imageSrc.src = "images/" + lastnameL + "_" + firstnameL + ".png" ;
+console.log(imageSrc); 
+    
+
+
+Student.image=imageSrc; 
+    // Pushes the objects into the array
 
 
 
@@ -183,10 +195,10 @@ function displayStudent(allStudents) {
     clone.querySelector("[data-field=middle]").textContent = allStudents.middle;
     clone.querySelector("[data-field=house]").textContent = allStudents.House;
   
+    // clone.querySelector("[data-field=Image]").src= allStudents.image.src;
 
 
-
-
+    clone.querySelector("#studentImage").src = allStudents.image.src;
 
 
 
